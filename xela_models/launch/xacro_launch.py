@@ -12,7 +12,7 @@ def generate_launch_description():
         DeclareLaunchArgument(
             "xela_sensor",
             description="Model of xela sensor.",
-            choices=["4x4", "ahrcpcpn"],
+            choices=["1x6", "4x4", "4x6", "aftc", "aftf", "allegro_hand_right", "taxel", "xela"],
         )
     )
     # Initialize Arguments
@@ -22,7 +22,7 @@ def generate_launch_description():
     description_file = PathJoinSubstitution([
         FindPackageShare("xela_models"),
         "urdf",
-        PythonExpression(["'", xela_sensor, ".urdf'"])
+        PythonExpression(["'", xela_sensor, ".xacro'"])
     ])
     declared_arguments.append(
         DeclareLaunchArgument(
